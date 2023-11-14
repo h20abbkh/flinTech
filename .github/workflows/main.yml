@@ -20,10 +20,10 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t your-dockerhub-username/your-image-name:latest .
+        run: docker build -t shafi.khidri@gmail.com/your-image-name:latest .
         # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name
 
       - name: Push Docker Image to Docker Hub
-        run: docker push your-dockerhub-username/your-image-name:latest
+        run: docker push shafi.khidri@gmail.com/your-image-name:latest
         # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name
 
