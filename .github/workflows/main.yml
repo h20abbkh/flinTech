@@ -19,5 +19,5 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Run tests
-      run: python -m unitest discover -s tests
+      run: python -m unittest discover -s tests
         
