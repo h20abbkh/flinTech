@@ -1,23 +1,30 @@
-name: Flask Web App Tests
+name: Build and Publish Docker Image
+
+
 on:
   push:
     branches:
-      - main
+      - main  # Replace with your main branch name
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use an Ubuntu runner (or your preferred OS)
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Run tests
-      run: python -m unittest discover -s tests
-        
+      - name: Build Docker Image
+        run: docker build -t your-dockerhub-username/your-image-name:latest .
+        # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name
+
+      - name: Push Docker Image to Docker Hub
+        run: docker push your-dockerhub-username/your-image-name:latest
+        # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name
+
