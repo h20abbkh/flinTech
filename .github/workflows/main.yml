@@ -1,0 +1,6 @@
+name: Flask Web App Tests
+on:
+  push:
+    branches:
+      - main
+      
