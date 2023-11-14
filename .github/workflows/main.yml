@@ -58,7 +58,7 @@ jobs:
       - name: modify the image
         run: |
           git config user.email  shafi.khidri@gmail.com
-          git config user.name  shafikhidri
+          git config user.name  h20abbkh
           pwd
           cat deployment.yaml
           pwd
